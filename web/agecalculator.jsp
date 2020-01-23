@@ -20,6 +20,6 @@
             </form>
         </div>
         ${message}
-        <a href=""><b>Arithmetic Calculator</b></a>
+        <a href="/Week02Lab_Calculators/arithmetic"><b>Arithmetic Calculator</b></a>
     </body>
 </html>
