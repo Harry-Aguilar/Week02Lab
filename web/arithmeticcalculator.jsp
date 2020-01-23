@@ -12,6 +12,18 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h1>Arithmetic Calculator</h1>
+        <div>
+            <form>
+                <b>First: </b><input type="text" name="first"/><br>
+                <b>Second: </b><input type="text" name="second"/><br>
+                <input type="submit" value="+"/>
+                <input type="submit" value="-"/>
+                <input type="submit" value="*"/>
+                <input type="submit" value="/"/><br>
+            </form>
+        </div>
+        <b>Result:</b>${result}<br>
+        <a href="/Week02Lab_Calculators/age"><b>Age Calculator</b></a>
     </body>
 </html>
