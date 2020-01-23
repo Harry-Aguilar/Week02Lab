@@ -31,51 +31,47 @@ public class ArithmeticCalculatorServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
-        int first = 0;
-        int second = 0;
+        String fir = request.getParameter("first");
+        String sec = request.getParameter("second");
         int result;
         
-        try {
-            first = Integer.parseInt(request.getParameter("first"));
-            second = Integer.parseInt(request.getParameter("second"));
-        } catch (NumberFormatException e) {
+        if(fir != null && sec != null) {
+            try {
+                int first = Integer.parseInt(fir);
+                int second = Integer.parseInt(sec);
+                String operator = request.getParameter("operator");
+        
+                if (operator != null) {
+                    switch(operator) {
+                        case "+":
+                            result = first + second;
+                            request.setAttribute("result", result);
+                            break;
+                        case "-":
+                            result = first - second;
+                            request.setAttribute("result", result);
+                            break;
+                        case "*":
+                            result = first * second;
+                            request.setAttribute("result", result);
+                            break;
+                        case "/":
+                            if(second != 0){
+                                result = first / second;
+                                request.setAttribute("result", result);
+                            } else {
+                                request.setAttribute("result", "invalid.");
+                            }
+                            break;
+                    }
+                }
+            } catch (NumberFormatException e) {
+                request.setAttribute("result", "invalid.");
+            }
+        } else {
             request.setAttribute("result", "---");
         }
-        String operator = request.getParameter("operator");
-        
-        if (operator != null) {
-            switch(operator) {
-                case "+":
-                    result = first + second;
-                    request.setAttribute("result", result);
-                    break;
-                case "-":
-                    result = first - second;
-                    request.setAttribute("result", result);
-                    break;
-                case "*":
-                    result = first * second;
-                    request.setAttribute("result", result);
-                    break;
-                case "/":
-                    result = first / second;
-                    request.setAttribute("result", result);
-                    break;
-                default:
-                    request.setAttribute("result", "---");
-            }
-        }
-        
-//        if (operator.equals("+")) {
-//            
-//        } else if (operator.equals("-")) {
-//            
-//        } else if (operator.equals("*")) {
-//            
-//        } else if (operator.equals("/")) {
-//            
-//        }
-              
+   
         getServletContext().getRequestDispatcher("/arithmeticcalculator.jsp").forward(request, response);
     }
     

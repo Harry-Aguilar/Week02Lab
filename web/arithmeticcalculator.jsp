@@ -23,7 +23,7 @@
                 <input type="submit" value="/" name="operator"/><br>
             </form>
         </div>
-        <b>Result: </b>${result}<br>
+        <b>Result:</b>${result}<br>
         <a href="/Week02Lab_Calculators/age"><b>Age Calculator</b></a>
     </body>
 </html>
