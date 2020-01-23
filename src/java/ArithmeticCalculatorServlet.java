@@ -10,6 +10,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import jdk.nashorn.internal.ir.RuntimeNode;
 
 /**
  *
@@ -30,9 +31,54 @@ public class ArithmeticCalculatorServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
+        int first = 0;
+        int second = 0;
+        int result;
+        
+        try {
+            first = Integer.parseInt(request.getParameter("first"));
+            second = Integer.parseInt(request.getParameter("second"));
+        } catch (NumberFormatException e) {
+            request.setAttribute("result", "---");
+        }
+        String operator = request.getParameter("operator");
+        
+        if (operator != null) {
+            switch(operator) {
+                case "+":
+                    result = first + second;
+                    request.setAttribute("result", result);
+                    break;
+                case "-":
+                    result = first - second;
+                    request.setAttribute("result", result);
+                    break;
+                case "*":
+                    result = first * second;
+                    request.setAttribute("result", result);
+                    break;
+                case "/":
+                    result = first / second;
+                    request.setAttribute("result", result);
+                    break;
+                default:
+                    request.setAttribute("result", "---");
+            }
+        }
+        
+//        if (operator.equals("+")) {
+//            
+//        } else if (operator.equals("-")) {
+//            
+//        } else if (operator.equals("*")) {
+//            
+//        } else if (operator.equals("/")) {
+//            
+//        }
+              
         getServletContext().getRequestDispatcher("/arithmeticcalculator.jsp").forward(request, response);
     }
-
+    
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.

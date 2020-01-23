@@ -17,13 +17,13 @@
             <form>
                 <b>First: </b><input type="text" name="first"/><br>
                 <b>Second: </b><input type="text" name="second"/><br>
-                <input type="submit" value="+"/>
-                <input type="submit" value="-"/>
-                <input type="submit" value="*"/>
-                <input type="submit" value="/"/><br>
+                <input type="submit" value="+" name="operator"/>
+                <input type="submit" value="-" name="operator"/>
+                <input type="submit" value="*" name="operator"/>
+                <input type="submit" value="/" name="operator"/><br>
             </form>
         </div>
-        <b>Result:</b>${result}<br>
+        <b>Result: </b>${result}<br>
         <a href="/Week02Lab_Calculators/age"><b>Age Calculator</b></a>
     </body>
 </html>
